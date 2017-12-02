@@ -1,0 +1,209 @@
+<!DOCTYPE HTML>
+<!--
+Skylar's Fun Little Project
+
+Bitcoin Hashing
+-->
+<html>
+	<head>
+		<title>Welcome...To SkyeNet!</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><strong>Editorial</strong> by HTML5 UP</a>
+									<ul class="icons">
+										<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+										<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+										<li><a href="#" class="icon fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
+										<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="https://www.linkedin.com/in/skylar-simoncelli-21265111a/" class="icon fa-linkedin-square"><span class="label">LinkedIn</span></a></li>
+									</ul>
+								</header>
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h1>The Bitcoin Protocol</h1>
+									</header>
+
+									<span class="image main"><img src="images/linux_penguin.jpg" alt="" /></span>
+
+									<p>Working in networking in the 21st century, you will likely be required to work with servers, and it is invaluable to learn at least the basics of Linux. Sure Windows Server is an option, by with all the research required to make sense of their Enterprise licensing fee structure you may as well just learn Linux. Now Linux GUI's are a dime a dozen; make one, change it, break it, fix it, etc. So in this basic introduction we will be focusing on the CLI (command-line-interface), and a few simple commands to get you navigating the directory structure like a pro.</p>
+
+									<p>...</p>
+									<p>....</p>
+
+									<hr class="major" />
+
+									<h2>Addresses</h2>
+									<p>Bitcoin implements the concept of Public/Private keys to secure your wallet. This idea is no different to a typical Username/Password combination, except here both keys are a variable length secret number that appears entirely random. Bitcoin Public Addresses are 512-bit strings, 25-34 characters in length that represent your wallet identifier. This wallet is secured by your 256-bit or 512-bit Private Key. Each Private-key is mathematically related to the Bitcoins in your wallet, and is the only possible key to validate the SSL signature of the transaction that transferred the Bitcoin to your Public Address in the first place, thus proving you are the legitimate owner of that Bitcoin sum. </p>
+									<p>A random 20 digit key is assigned as your public address, and another to your private address. When you make a transaction, this message is hashed against your private key, creating a unique digital signature tied to your Private Key, without ever leaking or compromising your Private Key.</p>
+
+									<hr class="major" />
+
+									<h2>The Hashing Algorithm</h2>
+									<p>SHA256 - a part of the SHA2 spec, upgrade to SHA1. Generates a 256 bit randomised output using complex 68 step mathmatical loop. The same input will produce the same output EVERY TIME, but changing the input even slightly will produce a vastly different output. The digest can only be verified by the original message. Being a 256-bit random value, it would take a 2017-level computer 7 years to guess, but they have only several minutes in bitcoin. Bitcoin is completely built around SHA in every aspect of the technology to create a decentralized computing network that operates built on a foundation of Mathematics, Consensus and Validation, with no need for Trust.
+                                    </p>
+									
+									<hr class="major" />
+
+									<h2>Validation and Mining</h2>
+									<p>
+                                        Every transaction is hashed against eachother to create new digests, and these digests hased until there is only a single digest that represents every recent transaction. This digest is final, and each coin in each transaction can be traced back to it's origin with the blockchain. Once this value has been calculated, the miner must perform a proof of work to secure the block. This involves generating a random PoW value, and running this with the resultant digest through SHA256 once more with the goal of creating a resultant FINAL digest with X leading 0's. X is the mining difficulty, and increasing this will increase the time taken to compute. X is currently set to 40. The chance that the first digit is 0 is 50%, the odds that the first two digits are both 0 is 25% (50% x 50%). The chance of the first 40 digits being 0 is so small that on average it requires around 1 TRILLION computational cycles. 
+                                        
+                                        Eventually, a miner on the network will find a successful hash pair, and this marks the beginning of a new block. The miner will broadcast this new block to the whole network immediately, and all miners will then abandon their failed guesses because the race has been won. The winning miner is incentivized by being rewarded with several bitcoin (bitcoin reward halves every 210,000 blocks until the year 2040 when all in circulation).  They will begin processing and verifying the new block, validating every single transaction and updating their record of the blockchain by building it one block at a time.
+                                        
+                                        If a miner leaves the network, they simply don't receive the newest block. The blockchain is secured by game-theory and the concept of consensus. All miners agree that the longest blockchain is the valid blockchain, and so each miner must have a fully up to date blockchain record before it can participate in mining and validating transactions. Without a fully up to date blockchain, validating transaction are impossible, as every block is encoded by the previous block.
+                                        </p>
+
+								</section>
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+                <div id="sidebar">
+                    <div class="inner">
+
+                        <!-- Search -->
+                            <section id="search" class="alt">
+                                <form method="post" action="#">
+                                    <input type="text" name="query" id="query" placeholder="Search" />
+                                </form>
+                            </section>
+
+                        <!-- Menu -->
+                            <nav id="menu">
+                                <header class="major">
+                                    <h2>Menu</h2>
+                                </header>
+                                <ul>
+                                    <li><a href="index.html">Homepage</a></li>
+                                    <li><a href="generic.html">A Foreword</a></li>
+                                    <li><a href="elements.html">The Low-Down</a></li>
+                                    <li>
+                                        <span class="opener">Everyday Technologies</span>
+                                        <ul>
+                                            <li><a href="elements.html">Internet Protocol</a></li>
+                                            <li><a href="subnetting_intro.html">Subnetting</a></li>
+                                            <li><a href="elements.html">DHCP</a></li>
+                                            <li><a href="#">ARP</a></li>
+                                            <li><a href="#">DNS</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <span class="opener">Routing Protocols</span>
+                                        <ul>
+                                            <li><a href="rip.html">RIP</a></li>
+                                            <li><a href="ospf.html">OSPF</a></li>
+                                            <li><a href="eigrp.html">EIGRP</a></li>
+                                            <li><a href="bgp.html">BGP</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <span class="opener">Switching Protocols</span>
+                                        <ul>
+                                            <li><a href="#">Spanning-Tree</a></li>
+                                            <li><a href="#">VLANs</a></li>
+                                            <li><a href="#">FHRP</a></li>
+                                            <li><a href="#">Frame-Relay</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <span class="opener">Linux Essentials</span>
+                                        <ul>
+                                            <li><a href="linux_intro.html">Introduction</a></li>
+                                            <li><a href="#">Directories and CLI</a></li>
+                                            <li><a href="#">Tips and Tricks</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="linux_intro.html">Linux Essentials</a></li>
+                                    <li>
+                                        <span class="opener">The Bitcoin Protcol</span>
+                                        <ul>
+                                            <li><a href="#">Introduction</a></li>
+                                            <li><a href="bitcoin_hashing.html">How it works</a></li>
+                                            <li><a href="#">Scaling Blockchain</a></li>
+                                            <li><a href="#">Blockchain Applications</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </nav>
+
+
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Ante interdum</h2>
+									</header>
+									<div class="mini-posts">
+										<article>
+											<a href="#" class="image"><img src="images/pic07.jpg" alt="" /></a>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+										</article>
+										<article>
+											<a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+										</article>
+										<article>
+											<a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+										</article>
+									</div>
+									<ul class="actions">
+										<li><a href="#" class="button">More</a></li>
+									</ul>
+								</section>
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Get in touch</h2>
+									</header>
+									<p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+									<ul class="contact">
+										<li class="fa-envelope-o"><a href="#">Skylar.Simoncelli@jtglobal.com</a></li>
+										<li class="fa-phone">(+44) 7797 859902</li>
+										<li class="fa-home">Resident of Sunny Little Jersey, Channel Islands </li>
+										<li class="fa-bitcoin">Donations always appreciated (BTC):
+											<br></br>
+										177Rw9N2PoepGwWumjgFn38W3N8LAddku5 </li>
+									</ul>
+								</section>
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; A twisted exersize of pure Power, by Skylar Simoncelli.  All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Web design inspired by: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
+
