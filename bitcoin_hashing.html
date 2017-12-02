@@ -67,6 +67,27 @@ Bitcoin Hashing
                                         <p>If a miner leaves the network, they simply don't receive the newest block. The blockchain is secured by game-theory and the concept of consensus. All miners agree that the longest blockchain is the valid blockchain, and so each miner must have a fully up to date blockchain record before it can participate in mining and validating transactions. Without a fully up to date blockchain, validating transaction are impossible, as every block is encoded by the previous block.
                                      	</p>
 
+									<h2>Game-Theory and Consensus</h2>
+									<p>Now Game-Theory is a study of strategic decision-making that focuses on chance versus reward, and can be applied to any game in existance. Without going too in-depth, the Theory outlines how at any point in a game, the player will measure the chance of success and the potential reward for that success. Let us breach this section with a simple example;
+
+                                        <p>John and Jim have committed a crime. They are promised a reduced-sentence if they confess to the crime, but threatened with an increased-sentence if they lie. As the reward factor is important, let us exaggerate this example by stating that the reward for confession is 1 year in prison, and punishment for lying is 100 years in prison. Without knowing what the other will say, the element of chance comes into play. John now has a 100% chance of getting a reduced sentence by pleading guilty to the crime. If John and Jim both lie then they are both free, but if only John lies and Jim confesses, then John is punished  with life in prison while Jim is rewarded. If no bribery is involved, both parties will make the decision best for them and confess when the a large punishment is pitted against a small reward. The chance of success relative to the reward is weighted against the alternatives in any scenario. /p>
+                                        
+                                        <p>In a Bitcoin-focused example, a miner has just expended a large cost of energy resources to win the mining race. The miner is now tasked with validating all transactions to build the newest block. If they validate a false transaction and another miner disputes this validation, they risk losing their mining reward. If they validate it correctly they get the standard mining reward governed by the Network. If this is a single fraudulent miner, the validation will be disputed by any other miner, and so they face a 100% chance of losing their reward. It would be silly to lie.</p>
+                                        
+                                        <p>Now we can bring bribery into play. Our fraudulent mining friend has other friends willing to lie for them. They have been bribed with a reward, and face no consequence of punishment as they were never elegible for the mining reward in the first place. But the next block requires guessing the next correct hash pair in order to validate the next block. The chance of any one miner finding this is equal to their ratio of their Hashing Power to that of the rest of the Bitcoin Network. At the time of writing, the total Hash Power of the Network is 12 million Tera-Hashes per-second. The most expensive, powerful ASIC's on the market can acheive around 15TH/s, or rather 0.00000125% of the total Network Hash Power. With 15TH/s, this percentage is the miner's chance of validating the next block. Now the chance of validating 2 blocks in a row becomes extremely unlikely. 3 blocks near-impossible, and so-on. With each new block, more and more electrical mining resources are being risked, as all rewards will be lost if a transaction this Blockchain is found to be invalid.</p>
+
+                                        <p>But here's the trick. In the Bitcoin Protocol...a transaction is not considered successful unless it has been in the last SIX validated blocks.</p>
+
+                                        <p>Here we can see the genius of Bitcoin's decentralized nature. A fraudulent attack on the Network would require vast amounts of Hash-Power and an incomprehendable amount of luck, with a high-level of financial risk on the line. Game-Theory protects every transaction on the Blockchain to ensure only legitimate transactions can be validated. </p>
+                                        
+                                        <p>Now Bitcoin has encountered anomolies in the past; in 2014 the group mining pool AntPool mined 6 new blocks in a row, creating a lot of panic in the Network. At the time, such a large amount of processing power was concentrated to a single virtual miner that by this anomoly occured by sheer chance. The pool voluntary shut down to allow the Network to converge, and reduced their hash rate immediately. Such teething problems were mathematically improbable but possible at the time, but with the recent growth of the Bitcoin Network's Hash Power, a modern day consensus attack would require far more power than any single mining pool can accomplish, and the more decentralized the Network becomes, the greater the inbuilt security against such attacks becomes. </p>
+
+                                        <p> John and Jim may choose to risk punishment by lying, but with 100,000 suspects, the impossible chance of them all chosing the least likely option makes this infeasible. </p>
+                                     	</p>
+
+									
+									
+									
 								</section>
 
 						</div>
