@@ -5,43 +5,46 @@ Skylar's Fun Little Project
 GENERIC
 -->
 <html>
-	<head>
-		<title>Welcome...To SkyeNet!</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-	</head>
-	<body>
+        <head>
+                <title>Welcome...To SkyeNet!</title>
+                <meta charset="utf-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+                <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+                <link rel="stylesheet" href="assets/css/main.css" />
+                <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+                <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+        </head>
+        <body>
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+                <!-- Wrapper -->
+                        <div id="wrapper">
 
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
+                                <!-- Main -->
+                                        <div id="main">
+                                                <div class="inner">
 
-							<!-- Header -->
-								<header id="header">
-									<a href="index.html" class="logo">Welcome to <strong>SkyeNet</strong></a>
-									<ul class="icons">
-										<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-										<li><a href="#" class="icon fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
-										<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-										<li><a href="#" class="icon fa-medium"><span class="label">Medium</span></a></li>
-									</ul>
-								</header>
+                                                        <!-- Header -->
+                                                                <header id="header">
+                                                                        <a href="index.html" class="logo"><strong>Editorial</strong> by HTML5 UP</a>
+                                                                        <ul class="icons">
+                                                                                <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                                                                                <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                                                                                <li><a href="#" class="icon fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
+                                                                                <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+                                                                                <li><a href="#" class="icon fa-medium"><span class="label">Medium</span></a></li>
+                                                                        </ul>
+                                                                </header>
+
+                                                                <section>
+                                                                        <header class="main">
+                                                                                <h1>EIGRP</h1>
+                                                                        </header>
 
 
- <!-- Table -->
+                                                                        <!-- Table -->
 
 
-									<header class="main">
-										<h1>Protocol Technicals</h1>
-									</header>
+                                                                                                        <h4>Protocol Technicals</h4>
                                                                                                         <div class="table-wrapper">
                                                                                                                 <table class="alt">
                                                                                                                         <thead>
@@ -83,37 +86,41 @@ GENERIC
                                                                                                                                         <td>90</td>
                                                                                                                                 </tr>
                                                                                                                         </tbody>
-
+                                                                                                                        <tfoot>
+                                                                                                                                <tr>
+                                                                                                                                        <td colspan="2"></td>
+                                                                                                                                        <td>100.00</td>
+                                                                                                                                </tr>
+                                                                                                                        </tfoot>
                                                                                                                 </table>
                                                                                                         </div>
 
+                                                                                        </div>
+                                                                                        <div class="6u$ 12u$(medium)">
+
+                                                                                                <!-- Content -->
+                                                                <section>
+                                                                        <hr class="major" />
+                                                                                <h1>Overview</h1>
+                                                                        </header>
+
+                                                                        
+                                                                        <p>EIGRP is a Cisco-proprietary routing protocol that combines the simplicity and low overhead of Distance Vector protocols with the reliability and intelligence of Link-State protocols. EIGRP routers will learn all possible routes to a given network and create a Topology Table database to store this information. </p>
+
+                                                                        <p>When a router is configured to run EIGRP, it will begin sending out "hello" packets on all active ports to discover other EIGRP routers. This packet advertises the Router ID of the sender, as well as a range of variables such as the EIGRP AS number, hello/dead times, etc. Upon receipt of one of these packets, an EIGRP router will evaluate the advertised parameters. If these parameters match, then it will save this remote device into it's Neighbor Table. </p>
+
+                                                                        <p>Once a neighborship has been established, the routers can now share their routing tables with all of it's neighbors. Each router will store all received information in their Topology Table to learn all surrounding alternate routes. They will then run their DUAL (Diffused-update Algorithm) to generate a metric for each path based on the defined sub-metrics (bandwidth, delay, MTU, reliability & load) to determine the "best path". It will mark each route with it's overall metric, and will load the successor route into it's Routing Table. This route is aptly names the Successor route. The second best route is also loaded into the Routing Table as a Feasible Successor, to immediately takeover should Successor route be lost.</p>
 
 
+                                                                        <hr class="major" />
+                                                                                <h1>The DUAL Algorithm</h1>
+                                                                        </header>
 
+                                                                        <p>The Routing Algorithm that EIGRP uses to calculate the "Best" Path is called the DUAL Algorithm, or rather the Diffused-Update Algorithm. This is a clever routing calculation that takes into account a range of circuit paramaters: Bandwidth, Delay, Load, Reliability and MTU. It then feeds these values into the DUAL Algorithm to calculate the overall Metric that it assigns each path. The Algorithm is as follows:</p>
 
-
-
-
-							<!-- Content -->
-								<section>
-									<header class="main">
-										<h1>Overview</h1>
-									</header>
-
-
-									<p>EIGRP is a Cisco-proprietary routing protocol that combines the simplicity and low overhead of Distance Vector protocols with the reliability and intelligence of Link-State protocols. EIGRP routers will learn all possible routes to a given network and create a Topology Table database to store this information. </p>
-
-                                    <p>When a router is configured to run EIGRP, it will begin sending out "hello" packets on all active ports to discover other EIGRP routers. This packet advertises the Router ID of the sender, as well as a range of variables such as the EIGRP AS number, hello/dead times, etc. Upon receipt of one of these packets, an EIGRP router will evaluate the advertised parameters. If these parameters match, then it will save this remote device into it's Neighbor Table. </p>
-
-                                    <p>Once a neighborship has been established, the routers can now share their routing tables with all of it's neighbors. Each router will store all received information in their Topology Table to learn all surrounding alternate routes. They will then run their DUAL (Diffused-update Algorithm) to generate a metric for each path based on the defined sub-metrics (bandwidth, delay, MTU, reliability & load) to determine the "best path". It will mark each route with it's overall metric, and will load the successor route into it's Routing Table. This route is aptly names the Successor route. The second best route is also loaded into the Routing Table as a Feasible Successor, to immediately takeover should Successor route be lost.</p>
-
-									<<hr class="major" />
-                                     	<h1>The DUAL Algorithm</h1>
-                                    </header>
-
-                                                                       <!-- Preformatted Code -->
+                                                                        <!-- Preformatted Code -->
                                                                  
-                                                                                                       <pre><code>EIGRP Metric = 256*((K1*Bandwidth) + (K2*Bandwidth)/(256-Load) + K3*Delay)*(K5/(Reliability + K4)))
+                                                                                                        <pre><code>EIGRP Metric = 256*((K1*Bandwidth) + (K2*Bandwidth)/(256-Load) + K3*Delay)*(K5/(Reliability + K4)))
 
                                                                                                         </code></pre>
 
@@ -127,16 +134,18 @@ GENERIC
 
 
 
-                                    <p>In the past, bandwidth was always the main factor is determining the best route, but with modern network performance Delay is also become much more critical. Applications such as online gaming, VoIP and media streaming can make do with bandwidth-limitations through clever compression algorithms, but are affected much greater by delay. As such, EIGRP only takes into account the lowest bandwidth in a possible route, but does account for the sum of all delays at each hope along the path.</p>
+                                                                        <p>In the past, bandwidth was always the main factor is determining the best route, but with modern network performance Delay is also become much more critical. Applications such as online gaming, VoIP and media streaming can make do with bandwidth-limitations through clever compression algorithms, but are affected much greater by delay. As such, EIGRP only takes into account the lowest bandwidth in a possible route, but does account for the sum of all delays at each hope along the path.</p>
 
-                                    <p>EIGRP neighbors can share their routing tables, send updates to eachother and also direct queries to other devices to request alternate routes. These queries are sent on the EIGRP-specific Multicast address 224.0.0.10, and are flooded to all EIGRP-speakers. If a recipient can not provide a response, it will relay the multicast to all other EIGRP speakers.</p>
+                                                                        <p>EIGRP neighbors can share their routing tables, send updates to eachother and also direct queries to other devices to request alternate routes. These queries are sent on the EIGRP-specific Multicast address 224.0.0.10, and are flooded to all EIGRP-speakers. If a recipient can not provide a response, it will relay the multicast to all other EIGRP speakers.</p>
 
-								</section>
+                                                                       
 
-						</div>
-					</div>
+                                                                </section>
 
-				 <!-- Sidebar -->
+                                                </div>
+                                        </div>
+
+                               <!-- Sidebar -->
                                         <div id="sidebar">
                                                 <div class="inner">
 
@@ -183,8 +192,8 @@ GENERIC
                                                                                                 <li><a href="#">FHRP</a></li>
                                                                                                 <li><a href="#">Frame-Relay</a></li>
                                                                                         </ul>
-                                        										</li>
-                                        										<li>
+                                        </li>
+                                        <li>
                                                                                         <span class="opener">Linux Essentials</span>
                                                                                         <ul>
                                                                                                 <li><a href="linux_intro.html">Introduction</a></li>
@@ -193,7 +202,7 @@ GENERIC
                                                                                         </ul>
                                                                                 </li>
                                         
-                                        										<li>
+                                        <li>
                                                                                         <span class="opener">The Bitcoin Protcol</span>
                                                                                         <ul>
                                                                                                 <li><a href="#">Introduction</a></li>
@@ -206,60 +215,61 @@ GENERIC
                                                                 </nav>
 
 
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Ante interdum</h2>
-									</header>
-									<div class="mini-posts">
-										<article>
-											<a href="#" class="image"><img src="images/pic07.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
-									</div>
-									<ul class="actions">
-										<li><a href="#" class="button">More</a></li>
-									</ul>
-								</section>
 
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Get in touch</h2>
-									</header>
-									<p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-									<ul class="contact">
-										<li class="fa-envelope-o"><a href="#">information@untitled.tld</a></li>
-										<li class="fa-phone">(000) 000-0000</li>
-										<li class="fa-home">1234 Somewhere Road #8254<br />
-										Nashville, TN 00000-0000</li>
-									</ul>
-								</section>
+                                                        <!-- Section -->
+                                                                <section>
+                                                                        <header class="major">
+                                                                                <h2>Ante interdum</h2>
+                                                                        </header>
+                                                                        <div class="mini-posts">
+                                                                                <article>
+                                                                                        <a href="#" class="image"><img src="images/pic07.jpg" alt="" /></a>
+                                                                                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+                                                                                </article>
+                                                                                <article>
+                                                                                        <a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
+                                                                                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+                                                                                </article>
+                                                                                <article>
+                                                                                        <a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a>
+                                                                                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+                                                                                </article>
+                                                                        </div>
+                                                                        <ul class="actions">
+                                                                                <li><a href="#" class="button">More</a></li>
+                                                                        </ul>
+                                                                </section>
 
-							<!-- Footer -->
-								<footer id="footer">
-									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-								</footer>
+                                                        <!-- Section -->
+                                                                <section>
+                                                                        <header class="major">
+                                                                                <h2>Get in touch</h2>
+                                                                        </header>
+                                                                        <p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                                                                        <ul class="contact">
+                                                                                <li class="fa-envelope-o"><a href="#">information@untitled.tld</a></li>
+                                                                                <li class="fa-phone">(000) 000-0000</li>
+                                                                                <li class="fa-home">1234 Somewhere Road #8254<br />
+                                                                                Nashville, TN 00000-0000</li>
+                                                                        </ul>
+                                                                </section>
 
-						</div>
-					</div>
+                                                        <!-- Footer -->
+                                                                <footer id="footer">
+                                                                        <p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+                                                                </footer>
 
-			</div>
+                                                </div>
+                                        </div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
+                        </div>
 
-	</body>
+                <!-- Scripts -->
+                        <script src="assets/js/jquery.min.js"></script>
+                        <script src="assets/js/skel.min.js"></script>
+                        <script src="assets/js/util.js"></script>
+                        <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+                        <script src="assets/js/main.js"></script>
+
+        </body>
 </html>
