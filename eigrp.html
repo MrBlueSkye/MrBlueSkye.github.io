@@ -34,7 +34,7 @@ GENERIC
                                                                                 <li><a href="#" class="icon fa-medium"><span class="label">Medium</span></a></li>
                                                                         </ul>
                                                                 </header>
-                                                                
+
                                                                 <section>
                                                                         <header class="main">
                                                                                 <h1>EIGRP</h1>
@@ -98,44 +98,37 @@ GENERIC
                                                                                         </div>
                                                                                         <div class="6u$ 12u$(medium)">
 
-
-                                                        <!-- Content -->
-
+                                                                                                <!-- Content -->
                                                                 <section>
-                                                                        <header class="main">
-                                                                                <h1>EIGRP</h1>
+                                                                        <hr class="major" />
+                                                                                <h1>Overview</h1>
                                                                         </header>
 
-
+                                                                        
                                                                         <p>EIGRP is a Cisco-proprietary routing protocol that combines the simplicity and low overhead of Distance Vector protocols with the reliability and intelligence of Link-State protocols. EIGRP routers will learn all possible routes to a given network and create a Topology Table database to store this information. </p>
 
                                                                         <p>When a router is configured to run EIGRP, it will begin sending out "hello" packets on all active ports to discover other EIGRP routers. This packet advertises the Router ID of the sender, as well as a range of variables such as the EIGRP AS number, hello/dead times, etc. Upon receipt of one of these packets, an EIGRP router will evaluate the advertised parameters. If these parameters match, then it will save this remote device into it's Neighbor Table. </p>
 
                                                                         <p>Once a neighborship has been established, the routers can now share their routing tables with all of it's neighbors. Each router will store all received information in their Topology Table to learn all surrounding alternate routes. They will then run their DUAL (Diffused-update Algorithm) to generate a metric for each path based on the defined sub-metrics (bandwidth, delay, MTU, reliability & load) to determine the "best path". It will mark each route with it's overall metric, and will load the successor route into it's Routing Table. This route is aptly names the Successor route. The second best route is also loaded into the Routing Table as a Feasible Successor, to immediately takeover should Successor route be lost.</p>
 
-                                                                        <hr class="major" />
 
-                                                                        <h2>The DUAL algorithm:</h2>
+                                                                        <hr class="major" />
+                                                                                <h1>The DUAL Algorithm</h1>
+                                                                        </header>
 
                                                                         <!-- Preformatted Code -->
                                                                  
-                                                                                                        <pre><code>
+                                                                                                        <pre><code>EIGRP Metric = 256*((K1*Bandwidth) + (K2*Bandwidth)/(256-Load) + K3*Delay)*(K5/(Reliability + K4)))
 
-
-EIGRP Metric = 256*((K1*Bandwidth) + (K2*Bandwidth)/(256-Load) + K3*Delay)*(K5/(Reliability + K4)))
-
-</code></pre>
+                                                                                                        </code></pre>
 
                                                                         <p>Now this looks complex at first, but K values K2, K4 and K5 are set to 0 by default, and so the algorithm can be simplified to:</p>
 
                                                                         <!-- Preformatted Code -->
                                                     
-                                                                                                        <pre><code>
-
-
-EIGRP Metric = 256 x (Slowest Bandwidth in path + Combined Delay Values)
+                                                                                                        <pre><code>EIGRP Metric = 256 x (Slowest Bandwidth in path + Combined Delay Values)
                                                                                                         
-</code></pre>
+                                                                                                        </code></pre>
 
 
 
