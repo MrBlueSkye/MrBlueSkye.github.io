@@ -48,14 +48,31 @@ Bitcoin Hashing
 									<hr class="major" />
 
 									<h2>Addresses</h2>
-									<p>Bitcoin implements the concept of Public/Private keys to secure your wallet. This idea is no different to a typical Username/Password combination, except here both keys are a variable length secret number that appears entirely random. Bitcoin Public Addresses are 512-bit strings, 25-34 characters in length that represent your wallet identifier. This wallet is secured by your 256-bit or 512-bit Private Key. Each Private-key is mathematically related to the Bitcoins in your wallet, and is the only possible key to validate the SSL signature of the transaction that transferred the Bitcoin to your Public Address in the first place, thus proving you are the legitimate owner of that Bitcoin sum. </p>
+									<p>Bitcoin implements the concept of Public/Private keys to secure your wallet. This idea is no different to a typical Username/Password combination, except here both keys are a variable length secret number that appears entirely random. Bitcoin Public Addresses are 512-bit strings, 25-34 characters in length that represent your wallet identifier. This wallet is secured by your 256-bit or 512-bit Private Key. Each Private-key is mathematically related to the Bitcoins in your wallet, and is the only possible key to validate the SSL signature of the transaction that transferred the Bitcoin to your Public Address in the first place, thus proving you are the legitimate owner of that Bitcoin sum. Here is an example of a Bitcoin Public Address:</p>
+
+									<img src='https://chart.googleapis.com/chart?cht=qr&chl=177Rw9N2PoepGwWumjgFn38W3N8LAddku5&chs=180x180&choe=UTF-8&chld=L|2' rel='nofollow' alt='qr code'><a href='http://www.qrcode-generator.de' border='0' style='cursor:default'  rel='nofollow'></a>
+									<h4>177Rw9N2PoepGwWumjgFn38W3N8LAddku5</h4>h4>
+
 									<p>A random 20 digit key is assigned as your public address, and another to your private address. When you make a transaction, this message is hashed against your private key, creating a unique digital signature tied to your Private Key, without ever leaking or compromising your Private Key.</p>
 
 									<hr class="major" />
 
 									<h2>The Hashing Algorithm</h2>
-									<p>SHA-256 is the hashing algorithm used in the Bitcoin Protocol. Developed in 2001, SHA-256 is a part of the SHA-2 Secure-Hash Algorithm series, sucessor to the SHA-1 and SHA-0 series before it. SHA-256 generates a 256-bit randomised output from a 32-bit input using a complex 68-step mathmatical loop. The same input will produce the same output EVERY TIME, but changing the input even slightly will produce a vastly different output. As each digest can only be verified by the original message, this algorithm creates a mathematically perfect method of validation, and has been used by many to authenticate online activity such as forum posting, or software downloads for many years. </p>
-								        <p>Being a 256-bit random value, it would take a 2017-level computer 7 years to guess the correct input, but a miniscule fraction of a second to validate the digest if the input is known. This is where the Public Address comes into play, being used to validate the digital signature of a transaction. Bitcoin is completely built around SHA in every aspect of the technology to create a decentralized computing network that operates built on a foundation of Mathematics, Consensus and Validation, with no need for Trust. Whilst more modern Cryptocurrencies have chosen to adopt more advanced hashing algorithms such as SHA-3 and Scrypt, the purpose and implementation is near identical to that of Bitcoin.</p>
+									<p>SHA-256 is the hashing algorithm used in the Bitcoin Protocol. Developed in 2001, SHA-256 is a part of the SHA-2 Secure-Hash Algorithm series, sucessor to the SHA-1 and SHA-0 series before it. SHA-256 generates a 256-bit randomised output from a 32-bit input using a complex 68-step mathmatical loop. The same input will produce the same output EVERY TIME, but changing the input even slightly will produce a vastly different output. </p>
+
+									<pre><code>i = 0;
+
+										"SHA256 Hash Test 1" = 884a2dbf29536b4a90605d32ac4cdd2834c0b39e5455e8b7afdf63d43fd21c33
+</code></pre>
+
+<pre><code>i = 0;
+
+										"SHA256 Hash Test 2" = ec6a5de5230b31d795edaf01453c93ecf797c0ef4c96547ce8851c264609358c
+</code></pre>
+
+								        
+									<p> Note that such a small change to the input results in a completely different resultant hash.</p>									
+								        <p>As each digest can only be verified by the original message, this algorithm creates a mathematically perfect method of validation, and has been used by many to authenticate online activity such as forum posting, or software downloads for many years. Being a 256-bit random value, it would take a 2017-level computer 7 years to guess the correct input and reverse the hash, but a miniscule fraction of a second to gnerate a hash if the input is known and compare the outputs to ensure they are identical. This is where the Public Address comes into play, being used to validate the digital signature of a transaction. Bitcoin is completely built around SHA in every aspect of the technology to create a decentralized computing network that operates built on a foundation of Mathematics, Consensus and Validation, with no need for Trust. Whilst more modern Cryptocurrencies have chosen to adopt more advanced hashing algorithms such as SHA-3 and Scrypt, the purpose and implementation is near identical to that of Bitcoin.</p>
 									
 									<hr class="major" />
 
