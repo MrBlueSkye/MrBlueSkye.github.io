@@ -67,42 +67,52 @@ Bitcoin Hashing
 									
 									<p>BGP is a Path-Vector Routing Protocol. Similar to RIP, BGP uses hop-count as it's primary metric for finding the best route, but BGP uses hops between Autonomous Systems as opposed to hops between routers. Running over TCP Port 179, BGP is able to use TCP windowing to reliably exchange large databases of routes over the Internet. These databases contain routes for every network connected to the Internet, which at the time of writing stands at an incredulous 700,000 prefix entries! In Networking terms, this is the BGP Table, but many refer to it simply as the Internet Routing Table.</p>
 
-									<p>Any router running BGP will receive a copy of this Table, but BGP Attributes allow for the filtering of routes, as well as the parameter modification of all prefixed received and advertised. When processing a mulitple routes to the same network, BGP will run the Best Path Selection Algorithm to select a route from it's BGP Table. The algorithm determines the best path by comparing each valid route based on BGP Attributes. The Attributes listed from highest to lowest Priority are as follows:</p>
+									<p>Any router running BGP will receive a copy of this Table, but BGP Attributes allow for the filtering of routes, as well as the parameter modification of all prefixed received and advertised. When processing a mulitple routes to the same network, BGP will run the Best Path Selection Algorithm to select a route from it's BGP Table. The algorithm determines the best path by comparing each valid route based on BGP Attributes. The Attributes listed from highest to lowest Priority are as follows:
+
+									</p>
 
 
 											
 									<dl>
-														<dt>Weight</dt>
+														<h3>Weight</h3>
 														<dd>
-															<p>Prefer the path with the highest locally-configured WEIGHT</p>
+															<p><b>Action: </b>Prefer the path with the highest locally-configured WEIGHT</p>
+															<p><b>Description: </b>WEIGHT is a Cisco-propreitary per-neighbor attribute that can be configured to priorise routes learned from specific neighbors.</p>
 														</dd>
-														<dt>Local Preference</dt>
+														<h3>Local Preference</h3>
 														<dd>
-															<p>Prefer the path with the highest locally-configured LOCAL_PREF.</p>
+															<p><b>Action: </b>Prefer the path with the highest locally-configured LOCAL_PREF.</p>
+															<p><b>Description: </b>LOCAL_PREF is an attribute built into the BGP Standard and operates similarly to WEIGHT, however the Local Preference is configured locally on the actual router you would like to be preffered, not on a per-neighbor basis.</p>
 														</dd>
-														<dt>Locally Originated</dt>
+														<h3>Locally Originated</h3>
 														<dd>
-															<p>Prefer the path that was locally originated via a network or aggregate BGP subcommand or through redistribution from an IGP.</p>
+															<p><b>Action: </b>Prefer the path that was locally originated via a network or aggregate BGP subcommand or through redistribution from an IGP.</p>
+															<p><b>Description: </b>Any path that has been originated on a local router will be preferred over any paths learned from a BGP Peer. If no locally originated prefix exists in the BGP table for the paths being compared then this attribute is ignored.</p>
 														</dd>
-														<dt>AS Path</dt>
+														<h3>AS Path</h3>
 														<dd>
-															<p>Prefer the path with the shortest AS_PATH.</p>
+															<p><b>Action: </b>Prefer the path with the shortest AS_PATH.</p>
+															<p><b>Description: </b>The original and the most fundamental attribute of BGP, the AS_PATH attribute stores a list of the BGP Automomous System numbers through which the route was learned. If AS1 advertises a route to AS2, the AS_PATH observed in AS2 would be "1". If AS2 then passes this UPDATE to AS3, AS3 would observe an AS_PATH of "1 2". As BGP routers will by default ignore any prefix updates with an AS_PATH attribute containing their own AS number, this attribute prevents routing loops occurring on the Internet for routes learned from multiple sources.</p>
 														</dd>
-														<dt>MED</dt>
+														<h3>MED</h3>
 														<dd>
-															<p>Prefer the path with the lowest multi-exit discriminator (MED)</p>
+															<p><b>Action: </b>Prefer the path with the lowest Multi-Exit Discriminator (MED)</p>
+															<p><b>Description: </b>The MED, commonly reffered to as BGP Metric, is an optional, non-transitive attribute. This means that it is not enabled by default, and if it is enabled then the attribute will only be passed to immediate neighbors. If an AS has multiple connections to a neighboring AS, the MED allows BGP to directly which path we would like neighboring AS to route traffic to us over.</p>
 														</dd>
-														<dt>Network Type</dt>
+														<h3>Network Type</h3>
 														<dd>
-															<p>Prefer routes learned through eBGP over iBGP routes.</p>
+															<p><b>Action: </b>Prefer routes learned through eBGP (External BGP) over iBGP (Internal BGP) routes.</p>
+															<p><b>Description: </b>This attribute sets the BGP instance to make routing decisions solely based on the Internet Routing Table. It will only fall back to iBGP should a route entry not exist in the BGP Table.</p>
 														</dd>
-														<dt>Router ID</dt>
+														<h3>Router ID (RID)</h3>
 														<dd>
-															<p>Prefer the route that comes from the BGP router with the lowest router ID.</p>
+															<p><b>Action: </b>Prefer the route that comes from the BGP router with the lowest Router-ID.</p>
+															<p><b>Description: </b>Every BGP Speaker is configured with a unique Router-ID. In private networks running iBGP, this will likely be a logical loopback IP address for enhanced resiliency. In eBGP, the Router-ID will be the external-facing Public IP Address of that router. </p>
 														</dd>
-														<dt>Neighbor IP</dt>
+														<h3>Neighbor IP</h3>
 														<dd>
-															<p>If the originator or router ID is the same for multiple paths, prefer the path that comes from the lowest neighbor IP address.</p>
+															<p><b>Action: </b>Prefer the path that comes from the lowest neighbor IP Address.</p>
+															<p><b>Description: </b>If the Router-ID is the same for multiple routes in the BGP Table, this is indicitave that the routes were learned from the same neighbor. In this case, BGP will choose the lowest originating IP Address as a tie-breaker.</p>
 														</dd>
 									</dl>
 
