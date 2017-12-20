@@ -113,17 +113,13 @@ GENERIC
 
                                                                         <!-- Preformatted Code -->
                                                                  
-                                                                                                        <pre><code>EIGRP Metric = 256*((K1*Bandwidth) + (K2*Bandwidth)/(256-Load) + K3*Delay)*(K5/(Reliability + K4)))
-
-                                                                                                        </code></pre>
+                                                                                                        <pre><code>EIGRP Metric = 256*((K1*Bandwidth) + (K2*Bandwidth)/(256-Load) + K3*Delay)*(K5/(Reliability + K4)))</code></pre>
 
                                                                         <p>Now this looks complex at first, but K values K2, K4 and K5 are set to 0 by default, and so the algorithm can be simplified to:</p>
 
                                                                         <!-- Preformatted Code -->
                                                     
-                                                                                                        <pre><code>EIGRP Metric = 256 x (Slowest Bandwidth in path + Combined Delay Values)
-                                                                                                        
-                                                                                                        </code></pre>
+                                                                                                        <pre><code>EIGRP Metric = 256 x (Slowest Bandwidth in path + Combined Delay Values)</code></pre>
 
 
 
