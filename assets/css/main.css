@@ -2552,7 +2552,7 @@
 	}
 
 		.image img {
-			border-radius: 0.375em;
+			border-radius: 0.4em;
 			display: block;
 		}
 
@@ -2601,17 +2601,17 @@
 	}
 
 		a.image img {
-			-moz-transition: -moz-transform 0.2s ease;
-			-webkit-transition: -webkit-transform 0.2s ease;
-			-ms-transition: -ms-transform 0.2s ease;
-			transition: transform 0.2s ease;
+			-moz-transition: -moz-transform 0.3s ease;
+			-webkit-transition: -webkit-transform 0.3s ease;
+			-ms-transition: -ms-transform 0.3s ease;
+			transition: transform 0.3s ease;
 		}
 
 		a.image:hover img {
-			-moz-transform: scale(1.075);
-			-webkit-transform: scale(1.075);
-			-ms-transform: scale(1.075);
-			transform: scale(1.075);
+			-moz-transform: scale(1.1);
+			-webkit-transform: scale(1.1);
+			-ms-transform: scale(1.1);
+			transform: scale(1.1);
 		}
 
 /* List */
