@@ -116,7 +116,58 @@ Bitcoin Hashing
 														</dd>
 									</dl>
 
+									<h2>BGP Configuration</h2>
+									
+									
+									<p>Here I am going to give a quick overview of some BGP configuration examples. I will be using the well-known Cisco IOS syntax, though the protocol-specific concepts remain true for any vendor.</p>
 
+									<p>Now, to enable a base BGP configuration: </p>
+
+									<div class="row">
+														<div class="6u 12u$(small)">
+
+															<pre><code>!configure external interface
+Router 1(config)#interface GigabitEthernet 0/0
+Router 1(config-if)#description Link to Router 2
+Router 1(config-if)#ip address 200.0.0.0 255.255.255.254
+Router 1(config-if)#no shutdown 
+
+!we will configure an ACL to only receive BGP advertisements for the remote private network
+Router 1(config)#access-list 1 permit 192.168.100.0 0.0.0.255
+Router 1(config)#access-list 1 deny any
+
+!configure eBGP neighborship
+Router 1(config)#router bgp 65000
+Router 1(config-router)#no auto-summary
+Router 1(config-router)#neighbor 200.0.0.1 remote-as 65001
+Router 1(config-router)#neighbor 200.0.0.1 distribute-list 1 in
+Router 1(config-router)#network 192.168.0.0 mask 255.255.255.0</code></pre>
+
+															
+
+														</div>
+														<div class="6u$ 12u$(small)">
+
+															<pre><code>Router 2(config)#interface GigabitEthernet 0/0
+Router 2(config-if)#description Link to Router 1
+Router 2(config-if)#ip address 200.0.0.1 255.255.255.254
+Router 2(config-if)#no shutdown
+
+
+Router 2(config)#access-list 1 permit 192.168.0.0 0.0.0.255
+Router 2(config)#access-list 1 deny any
+
+
+Router 2(config)#router bgp 65001
+Router 2(config-router)#no auto-summary
+Router 2(config-router)#neighbor 200.0.0.0 remote-as 65000
+Router 2(config-router)#neighbor 200.0.0.0 distribute-list 1 in
+Router 2(config-router)#network 192.168.100.0 mask 255.255.255.0</code></pre>
+
+															
+
+														</div>
+													</div>
 								
 
 									
