@@ -131,6 +131,58 @@ GENERIC
 
                                                                         <p>EIGRP neighbors can share their routing tables, send updates to eachother and also direct queries to other devices to request alternate routes. These queries are sent on the EIGRP-specific Multicast address 224.0.0.10, and are flooded to all EIGRP-speakers. If a recipient can not provide a response, it will relay the multicast to all other EIGRP speakers.</p>
 
+
+
+                                                                        <h2>EIGRP Configuration</h2>
+                                    
+                                    
+                                                                        <p>A major advantage of EIGRP is how simple it is to configure. This can often become a hurdle in troubleshooting issues down the line, but so long as you understand how the protocol operates then you should feel comfortable fixing any adjacencies and routing problems that may arise.</p>
+
+                                                                        <p>Now, to enable a base EIGRP configuration: </p>
+
+
+                                                                        <div class="row">
+                                                                                            <div class="6u 12u$(small)">
+
+                                                                                                <pre><code>!First, we will build a couple of interfaces...
+
+                                    Router 1(config)#interface GigabitEthernet 0/0
+                                    Router 1(config-if)#description Link to HQ
+                                    Router 1(config-if)#ip address 200.0.0.0 255.255.255.254
+                                    Router 1(config-if)#no shutdown 
+                                    Router 1(config-if)#interface Loopback 0
+                                    Router 1(config-if)#description Private /24 1
+                                    Router 1(config-if)#ip address 10.0.0.0 255.255.255.0
+
+
+                                    !Next, let us spin up an EIGRP instance. The Autonomous System is important, as neighbor adjacenies won't establish with mismatched AS numbers:
+
+                                    Router 1(config)#router eigrp 100
+
+
+
+                                    !Now we need to enable the EIGRP process on our external interface. 
+                                    !The EIGRP Network command will begin sending hello packets on any interfaces with an IP in the specified range, and it will also mark this range for advertising.
+                                    !We will enable EIGRP on the external interface, and also advertise our Loopback network to the HQ router...
+
+                                    Router 1(config-router)#network 200.0.0.0 0.0.0.1
+                                    Router 1(config-router)#network 10.0.0.0 0.0.0.255
+
+                                    !EIGRP summarises networks by default, which is a pain for any Network routing classless subnets. Disable it early to save the headache later...
+                                    Router 1(config-router)#no auto-summary
+
+                                    !Finally, our Router 1 has nothing left to advertise to HQ, but if a route is lost elsewhere in the Network, HQ will begin querying Router 1 to see if it has an alternate route.
+                                    !We will advertise our connected networks to HQ, but also let it know that we don't know any other networks so it shouldn't query us in the future...
+                                    Router 1(config-router)#eigrp stub connected
+
+                                    </code></pre>
+
+                                                                                                
+
+                                                                                            </div>
+
+                                                                                        </div>
+
                                                                        
 
                                                                 </section>
