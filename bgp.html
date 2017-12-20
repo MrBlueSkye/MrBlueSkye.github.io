@@ -136,7 +136,7 @@ Router 1(config-if)#no shutdown
 Router 1(config)#access-list 1 permit 192.168.100.0 0.0.0.255
 Router 1(config)#access-list 1 deny any
 
-!Finally we will configure eBGP neighborship to Router 2, filter out all prefixes except the remote private network, and advertise our out private IP range.
+!Finally we will configure eBGP neighborship to Router 2, and filter all prefixes except the remote private network.
 Router 1(config)#router bgp 65000
 Router 1(config-router)#no auto-summary
 Router 1(config-router)#neighbor 200.0.0.1 remote-as 65001
