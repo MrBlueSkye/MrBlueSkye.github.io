@@ -148,16 +148,17 @@ Router 1(config-router)#network 192.168.0.0 mask 255.255.255.0</code></pre>
 														</div>
 														<div class="6u$ 12u$(small)">
 
-															<pre><code>Router 2(config)#interface GigabitEthernet 0/0
+															<pre><code>!
+Router 2(config)#interface GigabitEthernet 0/0
 Router 2(config-if)#description Link to Router 1
 Router 2(config-if)#ip address 200.0.0.1 255.255.255.254
 Router 2(config-if)#no shutdown
 
-
+!
 Router 2(config)#access-list 1 permit 192.168.0.0 0.0.0.255
 Router 2(config)#access-list 1 deny any
 
-
+!
 Router 2(config)#router bgp 65001
 Router 2(config-router)#no auto-summary
 Router 2(config-router)#neighbor 200.0.0.0 remote-as 65000
