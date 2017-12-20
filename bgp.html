@@ -126,17 +126,17 @@ Bitcoin Hashing
 									<div class="row">
 														<div class="6u 12u$(small)">
 
-															<pre><code>!configure external interface
+															<pre><code>!First we need to configure our external interface to Router 2...
 Router 1(config)#interface GigabitEthernet 0/0
 Router 1(config-if)#description Link to Router 2
 Router 1(config-if)#ip address 200.0.0.0 255.255.255.254
 Router 1(config-if)#no shutdown 
 
-!we will configure an ACL to only receive BGP advertisements for the remote private network
+!Next we will then configure an ACL to only receive BGP advertisements for the remote private network...
 Router 1(config)#access-list 1 permit 192.168.100.0 0.0.0.255
 Router 1(config)#access-list 1 deny any
 
-!configure eBGP neighborship
+!Finally we will configure eBGP neighborship to Router 2, filter out all prefixes except the remote private network, and advertise our out private IP range.
 Router 1(config)#router bgp 65000
 Router 1(config-router)#no auto-summary
 Router 1(config-router)#neighbor 200.0.0.1 remote-as 65001
