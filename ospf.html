@@ -177,24 +177,49 @@ Router 1(config-if)#interface GigabitEthernet 1/0
 Router 1(config-if)#description Link to R3
 Router 1(config-if)#ip address 10.0.0.5 255.255.255.252</code></pre>
 
-                                    <p>Next, let us enable our OSPF process. The Autonomous System is a local identifier, and will not affect adjacencies like in EIGRP.</p>
+                                    <p>Next, let us enable our OSPF process. The Autonomous System is a local identifier, and will not affect adjacencies like in EIGRP. We will also set a manual RID, although OSPF will select one if not specified based on the highest loopback IP address, or else the highest interface IP address:</p>
 
-<pre><code>Router 1(config)#router ospf 1</code></pre>
+<pre><code>Router 1(config)#router ospf 1
+Router 1(config-router)#router-id 1.1.1.1</code></pre>
 
-                                    <p>Now We need to define which networks will be advertised into OSPF, and which area they are in. This can be done by using the following commands:</p>
+                                    <p>Now we need to define which networks will be advertised into OSPF, and which area they are in. This can be done by using the following commands:</p>
 
-<pre><code>Router 1(config-router)#network 10.0.0.1 0.0.0.3 area 0
-Router 1(config-router)#network 10.0.0.4 0.0.0.3</code></pre>
+<pre><code>Router 1(config-router)#network 10.0.0.0 0.0.0.3 area 0
+Router 1(config-router)#network 10.0.0.4 0.0.0.3
+Router 1(config-router)#redistribute connected subnets</code></pre>
                                     <p>It is important to understand that the OSPF Network command does not directly advertise the specified network, but instead is used to identify participating interfaces. An interface with 192.168.1.1/24 can be advertised into OSPF using a "network 192.168.1.0 0.0.0.255" command, but also with a "network 192.168.1.1 0.0.0.0" or even "network 0.0.0.0 0.0.0.0". As long as the network and wildcard mask in the network command can capture the IP address of a single interface, that interface will become OSPF-active and will advertise the full Network prefix in which it's interface address resides. "Network 0.0.0.0 0.0.0.0" will enable OSPF on all interfaces and advertise all local networks, however this is poor practise and can often lead to major problems down the line.</p>
-                                    
-                                    <p>EIGRP summarises networks by default, which is a pain for any Network routing classless subnets. Disable it early to save the headache later:</p>
-<pre><code>Router 1(config-router)#no auto-summary</code></pre>
 
-                                    <p>Finally, our Router 1 has nothing left to advertise to HQ, but if a route is lost elsewhere in the Network, HQ will begin querying Router 1 to see if it has an alternate route. We will advertise our connected networks to HQ, but also let it know that we don't know any other networks so it shouldn't query us in the future:</p>
+                                    <p>If we configure routers R2 and R3 similarly, we should see the OSPF adjacenies form. We can verify with the "show ip ospf neighbor" command:
 
-<pre><code>Router 1(config-router)#eigrp stub connected</code></pre>
+                                     <pre><code>Router1# show ip ospf neighbor 
 
-<p>And that is all that is needed to get EIGRP up and running on a basic network! EIGRP is a clever protocol, and setting it up is no more complex than that of a simple RIP routing domain. Though very basic, hopefully this gives a fair introduction to EIGRP's operation and an insight into the simplicity of a basic EIGRP configuration.</p>
+Neighbor ID     Pri    State      Dead Time    Address     Interface
+2.2.2.2          1     FULL/BDR   00:00:30     10.0.0.2    GigabitEthernet0/0
+3.3.3.3          1     FULL/DR    00:00:30     10.0.0.6    GigabitEthernet1/0</code></pre>
+
+<p>All three routers are in the same area (Area 0), and we can see that the DR election has taken place. With no manual DR Priorities configured, we can see that OSPF has failed over to looback addresses to decide the election. Neighbor 3.3.3.3 (R3) has been elected DR, with R2 as the backup.</p>
+
+<p>Now R4 has just been added to the network, a gateway router for a small branch of the network. We will connect R4 directly to R1:</p>
+
+<pre><code>Router 1(config)#interface GigabitEthernet 1/1
+Router 1(config-if)#description Link to R4
+Router 1(config-if)#ip address 10.0.0.9 255.255.255.252
+Router 1(config-if)#no shutdown</code></pre>
+
+<p>Being a small distribution router, we don't want R4 joining our backbone area, so we will create Area 1. Because R4's only path to the network is via R1, there is no use in sharing all routes with R4. By configuring Area 1 as a stub, R1 will know not to converge with R4 and will instead simply inject a default route (0.0.0.0/0) into R4's Routing Table:</p>
+
+<pre><code><pre><code>Router 1(config)#router ospf 1
+Router 1(config-router)#network 10.0.0.8 0.0.0.3 area 1
+Router 1(config-router)#area 1 stub</code></pre>
+
+<pre><code><pre><code>Router 4(config)#router ospf 4
+Router 4(config-router)#network 10.0.0.8 0.0.0.3 area 0
+Router 4(config-router)#network 192.168.1.0 0.0.0.255 area 1
+Router 4(config-router)#area 1 stub</code></pre>
+
+<p>Here I have outlined a basic OSPF network configuration. It is important to understand that OSPF is a highly tunable, maleable Routing Protocol, and it can be configured to do almost anything you would need it for. I hope to go into some of the more advanced OSPF concepts, such as LSA types, Stub Area types and redistribution in a future post, but hopefully this has given a good insight into the world of OSPF.</p>
+
+
 
                                                                        
 
