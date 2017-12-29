@@ -208,11 +208,11 @@ Router 1(config-if)#no shutdown</code></pre>
 
 <p>Being a small distribution router, we don't want R4 joining our backbone area, so we will create Area 1. Because R4's only path to the network is via R1, there is no use in sharing all routes with R4. By configuring Area 1 as a stub, R1 will know not to converge with R4 and will instead simply inject a default route (0.0.0.0/0) into R4's Routing Table:</p>
 
-<pre><code><pre><code>Router 1(config)#router ospf 1
+<pre><code>Router 1(config)#router ospf 1
 Router 1(config-router)#network 10.0.0.8 0.0.0.3 area 1
 Router 1(config-router)#area 1 stub</code></pre>
 
-<pre><code><pre><code>Router 4(config)#router ospf 4
+<pre><code>Router 4(config)#router ospf 4
 Router 4(config-router)#network 10.0.0.8 0.0.0.3 area 0
 Router 4(config-router)#network 192.168.1.0 0.0.0.255 area 1
 Router 4(config-router)#area 1 stub</code></pre>
