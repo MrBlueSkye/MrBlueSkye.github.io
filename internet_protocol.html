@@ -1,0 +1,329 @@
+<!DOCTYPE HTML>
+<!--
+Skylar's Fun Little Project
+
+GENERIC
+-->
+<html>
+        <head>
+                <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+                <title>Welcome...To SkyeNet!</title>
+                <meta charset="utf-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+                <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+                <link rel="stylesheet" href="assets/css/main.css" />
+                <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+                <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+        </head>
+        <body>
+
+                <!-- Wrapper -->
+                        <div id="wrapper">
+
+                                <!-- Main -->
+                                        <div id="main">
+                                                <div class="inner">
+
+                                                        <!-- Header -->
+                                                                <header id="header">
+                                                                        <a href="index.html" class="logo"><strong>Editorial</strong> by HTML5 UP</a>
+                                                                        <ul class="icons">
+                                                                                <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                                                                                <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                                                                                <li><a href="#" class="icon fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
+                                                                                <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+                                                                                <li><a href="#" class="icon fa-medium"><span class="label">Medium</span></a></li>
+                                                                        </ul>
+                                                                </header>
+
+                                                                <section>
+                                                                        <header class="main">
+                                                                                <h1>Subnetting</h1>
+                                                                        </header>                                                                                                     
+
+                                                                                                <!-- Content -->
+                                                                <section>
+                                                                        <hr class="major" />
+                                                                                <h1>TCP/IP Introduction</h1>
+                                                                        </header>                                                                       
+
+                                                                        <p>Internet Protocol, originally designed in 1977, is a Layer 3 protocol for packet-switched networks. IP is a connection-oriented communication technology that defines a Layer 3 addressing tier, the encapsulation of data into datagrams, and the logical transmission of these datagrams between network nodes. Think of IP as method of addressing every device on a network, where each and every device has a unique address. This address is paired with a subnet mask, which can be cross-referenced against the IP address to determine the scope of that netork, or rather how many IP addresses are in any given network.</p>
+
+                                                                        <p>When preparing a payload of data for IP transmission, the data is encapsulated behind an IP header. This header contains the source IP address of the local network node and a destination IP address. Other metadata can also be nested within this header. We have now turned our data payload into an IP "Packet". The process of delivering packets towards their destination is called "routing".</p>
+
+                                                                        <p>IP was originally designed to be a flexible connectionless communication protocol, with all connection-oriented communications being handled by the Transmission Control Protocol, and together the duo of technologies formed the TCP/IP suite. TCP was eventually adapted to run over IP, and User Datagram protocol designed to handle connectionless communications, and so both TCP and UDP are reffered to as Transport Protocols with IP as the foundational addressign technology.
+
+
+
+                                                                        <hr class="major" />
+                                                                                <h1>IPv4 and IPv6</h1>
+                                                                        </header>
+
+
+                                                                        <p>IP addresses consist of 4 bytes of data. Each byte (or octet) can range from a value of 0 to 255, resulting in a total number of 4,294,967,296 different IP address combinations. This was considered to be a perfectly scalable number of unique addresses in 1977, however the Internet proved more successful than anticipated and we began to run out of IP addresses. IPv6 was invented in 1996 to provide more unique combinations, however over two decades later it still suffers from minimal adoption.
+																		
+																		<hr class="major" />
+                                                                                <h1>Subnet Masks</h1>
+                                                                        </header>
+
+                                                                        <p>Every IP address is a part of a network, and the scope of the network is calculated by the subnet mask. A subnet mask, like an IP address, is a 32-bit value. Where IP addresses use these 32-bits to create a unique address value, subnet masks use these 32-bits to define where the network boundaries of the IP address lie. Let's look at an example:</p>
+
+                                                                        	<pre><code>192.168.1.1
+                                                                        	255.255.255.0</code></pre>
+
+                                                                        <p>This address is a common "private" IP address (which you will likely find in use on most public wifi networks). The subnet mask has 3 octets of 255 (meaning all bits equal 1), and a final octet of zero. This zero octet shows where the network address finishes and the host addressing begins. From this, we can understand that this 192.169.1.1 address is a part of the 192.168.1.0 network, of which it has the host address of 1. We can also understand that because the final octet of the subnet mask is 0, there can be 255 unique addresses within the 192.168.1.0 network. This is known as a Class C network, and is the smallest Classful network:</p>
+
+                                                                         <div class="table-wrapper">
+                                                                                                                <table class="alt">
+                                                                                                                        <thead>
+                                                                                                                                <tr>
+                                                                                                                                        
+                                                                                                                                        <th>Class</th>
+                                                                                                                                        <th>1st Octet Value</th>
+                                                                                                                                        <th>Subnet Mask</th>
+                                                                                                                                        <th>Number of Networks</th>
+                                                                                                                                        <th>Number of Hosts</th>
+
+                                                                                                                                </tr>
+                                                                                                                        </thead>
+                                                                                                                        <tbody>
+                                                                                                                                <tr>
+                                                                                                                                        
+                                                                                                                                        <td>Class A</td>
+                                                                                                                                        <td>1-126</td>
+                                                                                                                                        <td>126</td>
+                                                                                                                                        <td>16,777,214</td>
+                                                                                                                                </tr>
+                                                                                                                                <tr>
+                                                                                                                                        
+                                                                                                                                        <td>Class B</td>
+                                                                                                                                        <td>128-191</td>
+                                                                                                                                        <td>16,382</td>
+                                                                                                                                        <td>65,534</td>
+                                                                                                                                </tr>
+                                                                                                                                <tr>
+                                                                                                                                        <td>Class C</td>
+                                                                                                                                        <td>192-223</td>
+                                                                                                                                        <td>2,097,150</td>
+                                                                                                                                        <td>254</td>
+                                                                                                                                        
+                                                                                                                                </tr>
+                                                                                                                                <tr>
+                                                                                                                                        <td>Class D</td>
+                                                                                                                                        <td>224-239</td>
+                                                                                                                                        <td>(Used for Multicast)</td>
+                                                                                                                                        <td>N/A</td>
+                                                                                                                                        <td>RFC 4271</td>
+                                                                                                                                </tr>
+                                                                                                                                <tr>
+                                                                                                                                        <td>Class E</td>
+                                                                                                                                        <td>240-254</td>
+                                                                                                                                        <td>(Used for Research)</td>
+                                                                                                                                        <td>N/A</td>
+
+                                                                                                                                </tr>
+
+                                                                                                                               
+                                                                                                                        </tbody>
+                                                                                                                        
+                                                                                                                </table>
+                                                                                                        </div>
+
+
+                                                                        	<p>In the early days of the Internet, IP addresses were in abundance. Any network applying for their own IP addresses would be given either a Class A, B or C, depending of the size of their network and their requirements. This was an inefficient method of allocating IP address. If a network had a requirement for 300 addresses, they would need to be given two Class C networks (total of 510 addresses) just to cover their requirements.</p>
+                                                                        	<p>Altering the subnet masks can be used to divide traditional Classful networks into smaller, more efficient network domains. This practise is called subnetting, and is used to create subnets, or sub-networks. If a network has a requirement for only 8 IP addresses, we can alter the subnet mask to create a more efficient network:</p>
+
+                                                                        	                                                                        	<pre><code>192.168.1.1
+                                                                        	255.255.255.248</code></pre>
+                                                                        	
+                                                                        </p>
+
+
+                                                                        <!-- Preformatted Code -->
+                                                                 
+                                                                                                        <pre><code>EIGRP Metric = 256*((K1*Bandwidth) + (K2*Bandwidth)/(256-Load) + K3*Delay)*(K5/(Reliability + K4)))</code></pre>
+
+                                                                        <p>Now this looks complex at first, but K values K2, K4 and K5 are set to 0 by default, and so the algorithm can be simplified to:</p>
+
+                                                                        <!-- Preformatted Code -->
+                                                    
+                                                                                                        <pre><code>EIGRP Metric = 256 x (Slowest Bandwidth in path + Combined Delay Values)</code></pre>
+
+
+
+                                                                        <p>In the past, bandwidth was always the main factor is determining the best route, but with modern network performance Delay is also become much more critical. Applications such as online gaming, VoIP and media streaming can make do with bandwidth-limitations through clever compression algorithms, but are affected much greater by delay. As such, EIGRP only takes into account the lowest bandwidth in a possible route, but does account for the sum of all delays at each hope along the path.</p>
+
+                                                                        <p>EIGRP neighbors can share their routing tables, send updates to eachother and also direct queries to other devices to request alternate routes. These queries are sent on the EIGRP-specific Multicast address 224.0.0.10, and are flooded to all EIGRP-speakers. If a recipient can not provide a response, it will relay the multicast to all other EIGRP speakers.</p>
+
+
+
+                                                                                                                                                <h2>EIGRP Configuration</h2>
+                                    
+                                    
+                                                                        <p>A major advantage of EIGRP is how simple it is to configure. This can often become a hurdle in troubleshooting issues down the line, but so long as you understand how the protocol operates then you should feel comfortable fixing any adjacencies and routing problems that may arise.</p>
+
+                                                                        <p>Now, to enable a base EIGRP configuration. First, we will build a couple of interfaces... </p>
+
+                                                                       
+
+<pre><code>Router 1(config)#interface GigabitEthernet 0/0
+Router 1(config-if)#description Link to HQ
+Router 1(config-if)#ip address 200.0.0.0 255.255.255.254
+Router 1(config-if)#no shutdown 
+Router 1(config-if)#interface Loopback 0
+Router 1(config-if)#description Private /24 1
+Router 1(config-if)#ip address 10.0.0.0 255.255.255.0</code></pre>
+
+                                    <p>Next, let us spin up an EIGRP instance. The Autonomous System is important, as neighbor adjacenies won't establish with mismatched AS numbers:</p>
+
+<pre><code>Router 1(config)#router eigrp 100</code></pre>
+
+                                    <p>Now we need to enable the EIGRP process on our external interface. The EIGRP Network command will begin sending hello packets on any interfaces with an IP in the specified range, and it will also mark this range for advertising. We will enable EIGRP on the external interface, and also advertise our Loopback network to the HQ router:</p>
+
+<pre><code>Router 1(config-router)#network 200.0.0.0 0.0.0.1
+Router 1(config-router)#network 10.0.0.0 0.0.0.255</code></pre>
+
+                                    <p>EIGRP summarises networks by default, which is a pain for any Network routing classless subnets. Disable it early to save the headache later:</p>
+<pre><code>Router 1(config-router)#no auto-summary</code></pre>
+
+                                    <p>Finally, our Router 1 has nothing left to advertise to HQ, but if a route is lost elsewhere in the Network, HQ will begin querying Router 1 to see if it has an alternate route. We will advertise our connected networks to HQ, but also let it know that we don't know any other networks so it shouldn't query us in the future:</p>
+
+<pre><code>Router 1(config-router)#eigrp stub connected</code></pre>
+
+<p>And that is all that is needed to get EIGRP up and running on a basic network! EIGRP is a clever protocol, and setting it up is no more complex than that of a simple RIP routing domain. Though very basic, hopefully this gives a fair introduction to EIGRP's operation and an insight into the simplicity of a basic EIGRP configuration.</p>
+
+                                                                       
+
+                                                                </section>
+
+                                                </div>
+                                        </div>
+
+                               <!-- Sidebar -->
+                                        <div id="sidebar">
+                                                <div class="inner">
+
+                                                        <!-- Search -->
+                                                                <section id="search" class="alt">
+                                                                        <form method="post" action="#">
+                                                                                <input type="text" name="query" id="query" placeholder="Search" />
+                                                                        </form>
+                                                                </section>
+
+                                                        <!-- Menu -->
+                                                                <nav id="menu">
+                                                                        <header class="major">
+                                                                                <h2>Menu</h2>
+                                                                        </header>
+                                                                        <ul>
+                                                                                <li><a href="index.html">Homepage</a></li>
+                                                                                <li><a href="generic.html">A Foreword</a></li>
+                                                                                <li><a href="elements.html">The Low-Down</a></li>
+                                                                                <li>
+                                                                                        <span class="opener">Everyday Technologies</span>
+                                                                                        <ul>
+                                                                                                <li><a href="elements.html">Internet Protocol</a></li>
+                                                                                                <li><a href="subnetting_intro.html">Subnetting</a></li>
+                                                                                                <li><a href="elements.html">DHCP</a></li>
+                                                                                                <li><a href="#">ARP</a></li>
+                                                                                                <li><a href="#">DNS</a></li>
+                                                                                        </ul>
+                                                                                </li>
+                                                                                <li>
+                                                                                        <span class="opener">Routing Protocols</span>
+                                                                                        <ul>
+                                                                                                <li><a href="rip.html">RIP</a></li>
+                                                                                                <li><a href="ospf.html">OSPF</a></li>
+                                                                                                <li><a href="eigrp.html">EIGRP</a></li>
+                                                                                                <li><a href="bgp.html">BGP</a></li>
+                                                                                        </ul>
+                                                                                </li>
+                                                                                <li>
+                                                                                        <span class="opener">Switching Protocols</span>
+                                                                                        <ul>
+                                                                                                <li><a href="#">Spanning-Tree</a></li>
+                                                                                                <li><a href="#">VLANs</a></li>
+                                                                                                <li><a href="#">FHRP</a></li>
+                                                                                                <li><a href="#">Frame-Relay</a></li>
+                                                                                        </ul>
+                                        </li>
+                                        <li>
+                                                                                        <span class="opener">Linux Essentials</span>
+                                                                                        <ul>
+                                                                                                <li><a href="linux_intro.html">Introduction</a></li>
+                                                                                                <li><a href="#">Directories and CLI</a></li>
+                                                                                                <li><a href="#">Tips and Tricks</a></li>
+                                                                                        </ul>
+                                                                                </li>
+                                        
+                                        <li>
+                                                                                        <span class="opener">The Bitcoin Protcol</span>
+                                                                                        <ul>
+                                                                                                <li><a href="#">Introduction</a></li>
+                                                                                                <li><a href="bitcoin_hashing.html">How it works</a></li>
+                                                                                                <li><a href="#">Scaling Blockchain</a></li>
+                                                                                                <li><a href="#">Blockchain Applications</a></li>
+                                                                                        </ul>
+                                                                                </li>
+                                                                        </ul>
+                                                                </nav>
+
+
+
+                                                        <!-- Section -->
+                                                                <section>
+                                                                        <header class="major">
+                                                                                <h2>Ante interdum</h2>
+                                                                        </header>
+                                                                        <div class="mini-posts">
+                                                                                <article>
+                                                                                        <a href="#" class="image"><img src="images/pic07.jpg" alt="" /></a>
+                                                                                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+                                                                                </article>
+                                                                                <article>
+                                                                                        <a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
+                                                                                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+                                                                                </article>
+                                                                                <article>
+                                                                                        <a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a>
+                                                                                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+                                                                                </article>
+                                                                        </div>
+                                                                        <ul class="actions">
+                                                                                <li><a href="#" class="button">More</a></li>
+                                                                        </ul>
+                                                                </section>
+
+                                                        <!-- Section -->
+                                                                <section>
+                                                                        <header class="major">
+                                                                                <h2>Get in touch</h2>
+                                                                        </header>
+                                                                        <p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                                                                        <ul class="contact">
+                                                                                <li class="fa-envelope-o"><a href="#">information@untitled.tld</a></li>
+                                                                                <li class="fa-phone">(000) 000-0000</li>
+                                                                                <li class="fa-home">1234 Somewhere Road #8254<br />
+                                                                                Nashville, TN 00000-0000</li>
+                                                                        </ul>
+                                                                </section>
+
+                                                        <!-- Footer -->
+                                                                <footer id="footer">
+                                                                        <p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+                                                                </footer>
+
+                                                </div>
+                                        </div>
+
+                        </div>
+
+                <!-- Scripts -->
+                        <script src="assets/js/jquery.min.js"></script>
+                        <script src="assets/js/skel.min.js"></script>
+                        <script src="assets/js/util.js"></script>
+                        <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+                        <script src="assets/js/main.js"></script>
+
+        </body>
+</html>
